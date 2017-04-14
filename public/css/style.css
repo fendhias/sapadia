@@ -1,0 +1,106 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 70px;
+     /* Space untuk #footer */
+}
+.container {
+  max-width: 970px;
+  margin-top: 60px;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #f5f5f5;
+    font-size: 0.9em;
+    height: 50px; /* Tinggi footer */
+    text-align: center;
+    padding-top: 20px;
+}
+
+/*Posisi tombol Detail Edit Delete*/
+.box-button {
+    display: inline-block;
+}
+
+.navbar {
+	height: 60px;
+}
+
+.navbar-nav{
+  padding-left: 30px;
+}
+
+.navbar-brand {
+	padding: 12px 20px;
+}
+
+.navbar-brand>img {
+	width: 35px;
+	height: 35px;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+	border-bottom: 5px solid #ca171c;
+	background-color :transparent;
+}
+
+.navbar-nav>li>a {
+	padding-top: 20px;
+	padding-bottom :15px;
+}
+
+.parallax-window {
+    min-height: 700px;
+    background: transparent;
+}
+
+/* Jumlah siswa, pagination dan tombol tambah siswa */
+.table-nav, .tombol-nav {
+    display: block;
+    clear: both;
+    float: left;
+    width: 100%;
+}
+
+.tombol-nav {
+    margin-top: 10px;
+}
+
+.jumlah-data, .paging {
+    width: 50%;
+    height: 50px;
+    display: block;
+}
+
+.jumlah-data {
+    float: left;
+    padding-top: 15px;
+}
+
+.paging {
+    float: right;
+    text-align: right;
+}
+
+.paging ul.pager, .paging ul.pagination {
+    text-align: right;
+}
+
+ul.pagination, ul.pager {
+    margin-top: 8px;
+}
+
+/* Form Pencarian */
+#pencarian {
+    padding-bottom: 10px;
+}
+
+.panel-default {
+  padding: 5px;
+}
