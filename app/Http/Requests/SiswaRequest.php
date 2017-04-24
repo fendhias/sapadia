@@ -26,7 +26,7 @@ class SiswaRequest extends Request
     {
 
         return [
-            'nama_siswa'    => 'required|string|max:30',
+            'nama_siswa'    => 'required|string|max:100',
             'deskripsi'     => 'sometimes',
             'id_kategori'   => 'required',
             'id_users'      => 'required',

@@ -80,7 +80,7 @@ class ProdukController extends Controller
         // Update telepon di tabel telepon
         Session::flash('flash_message', 'Data siswa berhasil diupdate.');
 
-        return redirect('produk');
+        return redirect('produk/' . $siswa->id);
     }
 
     public function destroy(Produk $siswa)

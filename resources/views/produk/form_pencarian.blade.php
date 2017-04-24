@@ -7,9 +7,9 @@
 
         <div class="col-md-8">
             <div class="input-group">
-            {!! Form:: text('kata_kunci', (! empty($kata_kunci)) ? $kata_kunci : null,['class' => 'form-control', 'placeholder' => 'Masukkan Nama Siswa']) !!}
-            <span class="input-group-btn">
-            {!! Form::button('Cari', ['class' => 'btn btn-default', 'type' => 'submit']) !!}
+            {!! Form::text('kata_kunci', (! empty($kata_kunci)) ? $kata_kunci : null,['class' => 'form-control', 'placeholder' => 'Cari Produk ...']) !!}
+            <span class="input-group-btn" style="padding-left:30px;">
+            {!! Form::button('Terapkan', ['class' => 'btn btn-success', 'type' => 'submit']) !!}
             </span>
             </div>
         </div>

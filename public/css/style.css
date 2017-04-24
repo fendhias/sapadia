@@ -48,6 +48,8 @@ body {
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
 	border-bottom: 5px solid #ca171c;
 	background-color :transparent;
+  font-weight: bold;
+  color: #ca161c;
 }
 
 .navbar-nav>li>a {
@@ -98,9 +100,30 @@ ul.pagination, ul.pager {
 
 /* Form Pencarian */
 #pencarian {
-    padding-bottom: 10px;
+    padding-bottom: 0px;
+}
+
+.form-control{
+  border-radius: 0px;
 }
 
 .panel-default {
-  padding: 5px;
+  padding: 0px;
+  border-radius: 0px;
+}
+
+.img-rounded {
+  border-radius: 0px;
+}
+
+.btn-block {
+  padding: 10px;
+  border-radius: 0px;
+}
+
+.btn-success {
+  border-radius: 0px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 12px;
 }
