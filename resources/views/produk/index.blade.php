@@ -1,36 +1,34 @@
 @extends('template')
 
 @section('main')
-      <div id="produk" style="padding-top:50px;">
+      <div id="produk" style="padding-top:20px;">
 
-          @if (Auth::check())
-          <div class="tombol" style="padding-bottom:50px;">
-                  <a href="produk/create" class="btn btn-default pull-right"  style="padding:10px;padding-left:20px;padding-right:20px;border-radius:0px;">Tambah Produk</a>
-          </div>
-          @endif
+      @include('_partial.flash_message')
 
-        @include('_partial.flash_message')
+      @if (Auth::check())
+        <div class="tombol" style="padding-bottom:30px;">
+                <a href="produk/create" class="btn btn-default pull-right"  style="padding:10px;padding-left:20px;padding-right:20px;">Tambah Produk</a>
+        </div>
+      @endif
 
       <div class="pencarian">
         <div class="title" style="font-size:13px;color:#998e8e;padding-bottom:10px;">
           Pencarian
         </div>
-        <div class="panel panel-default" style="padding:20px;background-color: #f5f0f0;">
+        <div class="panel panel-default" style="padding:20px;">
           @include('produk.form_pencarian')
         </div>
       </div>
 
-
-
         @if (count($produk_list) > 0)
 
-        <div class="produk" style="padding-top:10px;">
+        <div class="produk">
           <div class="title" style="font-size:13px;color:#998e8e;padding-bottom:10px;">
             Semua produk
           </div>
 
           <?php foreach($produk_list as $produk): ?>
-            <div class="panel panel-default" style="margin-bottom:8px">
+            <div class="panel panel-default" style="margin-bottom:8px;padding:7px;">
               <div class="row">
                 <div class="col-lg-2" style="margin-right:0px;">
                     @if (isset($produk->foto))
@@ -38,15 +36,9 @@
                         width:120px;
                         height:120px;" src="{{ asset('fotoupload/' . $produk->foto) }}"></a>
                     @else
-                         @if ($produk->jenis_kelamin == 'L')
-                             <a href=" {{ 'produk/' . $produk->id }} "><img class="img-rounded" style="object-fit: cover;
-                             width:100px;
-                             height:100px;" src="{{ asset('fotoupload/dummymale.jpg') }}"></a>
-                         @else
-                             <a href=" {{ 'produk/' . $produk->id }} "><img class="img-rounded" style="object-fit: cover;
-                             width:100px;
-                             height:100px;" src="{{ asset('fotoupload/dummyfemale.jpg') }}"></a>
-                         @endif
+                         <a href=" {{ 'produk/' . $produk->id }} "><img class="img-rounded" style="object-fit: cover;
+                         width:120px;
+                         height:120px;" src="{{ asset('fotoupload/product.png') }}"></a>
                     @endif
                   </div>
                   <div class="col-lg-8" style="margin-left: -20px;">
@@ -73,7 +65,7 @@
         </div>
 
         @else
-            <p>Tidak ada data siswa.</p>
+            <p style="font-size: 25px; text-align: center;">Produk tidak tersedia</p>
         @endif
 
         <div class="table-nav">
@@ -82,8 +74,7 @@
             </div>
         </div>
 
-
-    </div> <!-- / #siswa -->
+    </div>
 @stop
 
 @section('footer')

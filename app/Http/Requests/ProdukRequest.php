@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class SiswaRequest extends Request
+class ProdukRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,6 +28,7 @@ class SiswaRequest extends Request
         return [
             'nama_siswa'    => 'required|string|max:100',
             'deskripsi'     => 'sometimes',
+            'harga'         => 'required',
             'id_kategori'   => 'required',
             'id_users'      => 'required',
             'foto'          => 'sometimes|image|max:500|mimes:jpeg,jpg,bmp,png',

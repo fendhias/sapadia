@@ -78,7 +78,9 @@
                 </div>
             </li>
               @else
-                <li><a href="{{ url('login') }}">Login</a></li>
+                <div class="login" style="padding-top:13px;">
+                  <a href = "{{ url('login') }}" class="btn btn-danger"><strong>Login</strong></a>
+                </div>
               @endif
             </ul>
           </div><!-- /.navbar-collapse -->

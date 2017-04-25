@@ -26,6 +26,18 @@
     @endif
 </div>
 
+@if ($errors->any())
+    <div class="form-group {{ $errors->has('harga') ? 'has-error' : 'has-success' }}">
+@else
+    <div class="form-group">
+@endif
+    {!! Form::label('harga', 'Masukan harga :', ['class' => 'control-label']) !!}
+    {!! Form::text('harga', null, ['class' => 'form-control']) !!}
+    @if ($errors->has('harga'))
+        <span class="help-block">{{ $errors->first('harga') }}</span>
+    @endif
+</div>
+
 <!-- Kelas -->
 @if ($errors->any())
     <div class="form-group {{ $errors->has('id_kategori') ? 'has-error' : 'has-success' }}">

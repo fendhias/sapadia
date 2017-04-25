@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests; // path saja, untuk form request (jika ada)
-use App\Http\Requests\SiswaRequest;
+use App\Http\Requests\ProdukRequest;
 use App\Produk;
 use App\Telepon;
 use App\Kategori;
@@ -40,7 +40,7 @@ class ProdukController extends Controller
         return view('produk.create');
     }
 
-    public function store(SiswaRequest $request)
+    public function store(ProdukRequest $request)
     {
         $input = $request->all();
 
@@ -51,7 +51,7 @@ class ProdukController extends Controller
 
         // Insert data siswa
         $siswa = Produk::create($input);
-        Session::flash('flash_message', 'Data siswa berhasil disimpan.');
+        Session::flash('flash_message', 'Data Produk berhasil disimpan.');
 
         return redirect('produk');
     }
@@ -61,7 +61,7 @@ class ProdukController extends Controller
         return view('produk.edit', compact('siswa'));
     }
 
-    public function update(Produk $siswa, SiswaRequest $request)
+    public function update(Produk $siswa, ProdukRequest $request)
     {
         $input = $request->all();
 
@@ -78,7 +78,7 @@ class ProdukController extends Controller
         $siswa->update($input);
 
         // Update telepon di tabel telepon
-        Session::flash('flash_message', 'Data siswa berhasil diupdate.');
+        Session::flash('flash_message', 'Data Produk berhasil diupdate.');
 
         return redirect('produk/' . $siswa->id);
     }
@@ -87,7 +87,7 @@ class ProdukController extends Controller
     {
         $this->hapusFoto($siswa);
         $siswa->delete();
-        Session::flash('flash_message', 'Data siswa berhasil dihapus.');
+        Session::flash('flash_message', 'Data Produk berhasil dihapus.');
         Session::flash('penting', true);
         return redirect('produk');
     }
@@ -119,7 +119,7 @@ class ProdukController extends Controller
     }
 
     // ===============================================================
-    private function uploadFoto(SiswaRequest $request)
+    private function uploadFoto(ProdukRequest $request)
     {
         $foto = $request->file('foto');
         $ext  = $foto->getClientOriginalExtension();
