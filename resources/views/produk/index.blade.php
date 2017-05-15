@@ -7,7 +7,7 @@
 
       @if (Auth::check())
         <div class="tombol" style="padding-bottom:30px;">
-                <a href="produk/create" class="btn btn-default pull-right"  style="padding:10px;padding-left:20px;padding-right:20px;">Tambah Produk</a>
+                <a href="produk/create" class="btn btn-default pull-right" style="padding:10px;padding-left:20px;padding-right:20px;">Tambah Produk</a>
         </div>
       @endif
 
@@ -43,14 +43,14 @@
                   </div>
                   <div class="col-lg-8" style="margin-left: -20px;">
                     <div class="nama" style="font-size:18px;padding-top:7px">
-                      <p>{{ link_to('produk/' . $produk->id, $produk->nama_siswa ) }}</p>
+                      <p>{{ link_to('produk/' . $produk->id, $produk->nama_produk ) }}</p>
                     </div>
-                    <h5>{{ $produk->kategori->nama_kategori }}</h5>
-                    <div class="hubungi" style="font-size:10px;padding-top:7px">
+                    <strong>{{ $produk->kategori->nama_kategori }}</strong>
+                    <div class="hubungi" style="font-size:10px;padding-top:14px">
                       @if (! empty($produk->users->id))
                         {{ link_to('anggota/' . $produk->users->id , 'Hubungi Penjual', ['class' => 'btn btn-success']) }}
                       @else
-                        {{ "Penjual tidak tersedia" }}
+                        {{ " " }}
                       @endif
                     </div>
                   </div>

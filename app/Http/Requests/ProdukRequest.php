@@ -26,7 +26,7 @@ class ProdukRequest extends Request
     {
 
         return [
-            'nama_siswa'    => 'required|string|max:100',
+            'nama_produk'    => 'required|string|max:100',
             'deskripsi'     => 'sometimes',
             'harga'         => 'required',
             'id_kategori'   => 'required',

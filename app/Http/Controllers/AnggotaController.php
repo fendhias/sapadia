@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Anggota;
+use App\User;
 
 class AnggotaController extends Controller
 {

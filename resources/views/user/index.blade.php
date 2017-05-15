@@ -1,16 +1,19 @@
 @extends('template')
 
 @section('main')
-    <div id="user">
-        <h2>User</h2>
+    <div id="user" style="padding-top:20px;">
 
         @include('_partial.flash_message')
 
+        <div class="tombol-nav">
+            <a href="user/create" class="btn btn-danger pull-right" style="margin-bottom:20px;">Tambah User</a>
+        </div>
+
         @if (count($user_list) > 0)
-            <table class="table">
-                <thead>
+            <table class="table" id="tabel-user">
+                <thead style="background-color: #ddd;">
                     <tr>
-                        <th>No</th>
+                        <th></th>
                         <th>Nama</th>
                         <th>Email</th>
                         <th>Level</th>
@@ -18,20 +21,48 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $i = 0; ?>
                     <?php foreach($user_list as $user): ?>
                     <tr>
-                        <td>{{ ++$i }}</td>
-                        <td><a href=" {{ 'anggota/' . $user->id }} ">{{ $user->name }}</a></td>
+                        <td style="padding-left:20px;">
+                          @if (isset($user->anggota->foto))
+                              <a href=" {{ 'user/' . $user->id }} "><img class="img-rounded" style="object-fit: cover;
+                              width:60px;
+                              height:60px;border-radius: 30%;" src="{{ asset('fotoupload/dummymale.jpg') }}"></a>
+                          @elseif (isset($user->anggota->jenis_kelamin))
+                               @if ($user->anggota->jenis_kelamin == 'L')
+                                   <a href=" {{ 'user/' . $user->id }} "><img class="img-rounded" style="object-fit: cover;
+                                   width:60px;
+                                   height:60px;border-radius: 30%;" src="{{ asset('fotoupload/dummymale.jpg') }}"></a>
+                               @else
+                                   <a href=" {{ 'user/' . $user->id }} "><img class="img-rounded" style="object-fit: cover;
+                                   width:60px;
+                                   height:60px;border-radius: 30%;" src="{{ asset('fotoupload/dummyfemale.jpg') }}"></a>
+                               @endif
+                           @else
+                               <a href=" {{ 'user/' . $user->id }} "><img class="img-rounded" style="object-fit: cover;
+                               width:60px;
+                               height:60px;border-radius: 30%;" src="{{ asset('fotoupload/dummymale.jpg') }}"></a>
+                          @endif
+                        </td>
+                        <td><a href=" {{ 'user/' . $user->id }} ">{{ $user->name }}</a></td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->level }}</td>
+                        <td>
+                          @if ( $user->level == 'admin' )
+                            <span class="label label-success">{{ $user->level }}</span></td>
+                          @else
+                            member</td>
+                          @endif
                         <td>
                             <div class="box-button">
-                                {{ link_to('user/' . $user->id . '/edit', 'Edit', ['class' => 'btn btn-warning btn-sm']) }}
+                              <a href="{{ URL::to('user/' . $user->id . '/edit') }}" class="btn btn-default">
+                                 <i class="glyphicon glyphicon-pencil"></i>
+                              </a>
                             </div>
                             <div class="box-button">
                                 {!! Form::open(['method' => 'DELETE', 'action' => ['UserController@destroy', $user->id]]) !!}
-                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
+                                    <button type="submit" class="btn btn-default">
+                                      <i class="glyphicon glyphicon-trash"></i>
+                                    </button>
                                 {!! Form::close() !!}
                             </div>
                         </td>
@@ -39,13 +70,17 @@
                     <?php endforeach ?>
                 </tbody>
             </table>
+
         @else
             <p>Tidak ada data user.</p>
         @endif
 
-        <div class="tombol-nav">
-            <a href="user/create" class="btn btn-primary">Tambah User</a>
+        <div class="table-nav">
+            <div class="paging">
+                {{ $user_list->links() }}
+            </div>
         </div>
+
 
     </div> <!-- / #kelas -->
 @stop

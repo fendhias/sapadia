@@ -36,7 +36,7 @@
 @endif
     {!! Form::label('level', 'Level:', ['class' => 'control-label']) !!}
     <div class="radio">
-        <label>{!! Form::radio('level', 'operator') !!} Operator</label>
+        <label>{!! Form::radio('level', 'operator') !!} Member</label>
     </div>
     <div class="radio">
         <label>{!! Form::radio('level', 'admin') !!} Administrator</label>

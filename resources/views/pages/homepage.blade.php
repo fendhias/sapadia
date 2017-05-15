@@ -1,82 +1,20 @@
  @extends('template')
 
- @section('paralax')
+ @section('main')
 
-      <header class="foto">
-          <div class="parallax-window" data-parallax="scroll" data-image-src="{{ asset('/img/q9glzfhyggk-aidan-meyer.jpg') }}" style="top: 20px;"></div>
-      </header>
-
-      <div class="container">
-        <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header"><strong>Produk</strong></h1>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                    <a class="thumbnail" href="#">
-                        <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                    <a class="thumbnail" href="#">
-                        <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                    <a class="thumbnail" href="#">
-                        <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                    <a class="thumbnail" href="#">
-                        <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                    <a class="thumbnail" href="#">
-                        <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                    <a class="thumbnail" href="#">
-                        <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                    <a class="thumbnail" href="#">
-                        <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                    <a class="thumbnail" href="#">
-                        <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                    <a class="thumbnail" href="#">
-                        <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                    <a class="thumbnail" href="#">
-                        <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                    <a class="thumbnail" href="#">
-                        <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                    <a class="thumbnail" href="#">
-                        <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                    </a>
-                </div>
-            </div>
-          <hr>
-
-          <a href="produk" class="btn btn-primary btn-lg center" style="border-radius: 0px;">Semua Produk</a>
-          </div>
+    <!-- First Featurette -->
+    <img style="margin:80px auto 20px;object-fit: cover;width:120px;height:120px;" class="img-responsive" src="img/profil.png" alt="">
+    <div class="title" style="padding-top:10px;">
+      <h1 style="text-align:center;font-weight:bold;">Marketplace Sapadia</h1>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3" style="padding-top:15px">
+        <p style="text-align:center;color:grey;">Marketplace Sapadia adalah ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+      </div>
+      <div class="col-md-2 col-md-offset-5">
+        <a href="produk" class="btn btn-danger btn-lg" style="margin-top:30px;">Lihat Produk</a>
+      </div>
+    </div>
 
 @stop
 

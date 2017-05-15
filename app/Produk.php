@@ -9,7 +9,7 @@ class Produk extends Model
     protected $table = 'produk';
 
     protected $fillable = [
-        'nama_siswa',
+        'nama_produk',
         'harga',
         'deskripsi',
         'id_kategori',
@@ -17,19 +17,14 @@ class Produk extends Model
         'foto',
     ];
 
-    public function getNamaSiswaAttribute($nama_siswa)
+    public function getNamaProdukAttribute($nama_produk)
     {
-        return ucwords($nama_siswa);
+        return ucwords($nama_produk);
     }
 
-    public function setNamaSiswaAttribute($nama_siswa)
+    public function setNamaProdukAttribute($nama_produk)
     {
-        $this->attributes['nama_siswa'] = strtolower($nama_siswa);
-    }
-
-    public function telepon()
-    {
-        return $this->hasOne('App\Telepon', 'id_siswa');
+        $this->attributes['nama_produk'] = strtolower($nama_produk);
     }
 
     public function kategori()

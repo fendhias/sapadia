@@ -106,10 +106,10 @@ return [
             'unique'         => 'NOMOR TLEPON sudah terdaftar.',
         ],
         'id_kategori' => [
-            'required'        => 'Kolom KELAS harus diisi.',
+            'required'        => 'Kolom kategori harus diisi.',
         ],
         'id_users' => [
-            'required'        => 'Kolom ini harus diisi.',
+            'required'        => 'Kolom pemilik harus diisi.',
         ],
         'foto' => [
             'image' => 'Kolom FOTO hanya boleh berisi file gambar.',

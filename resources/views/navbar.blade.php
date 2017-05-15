@@ -79,7 +79,7 @@
             </li>
               @else
                 <div class="login" style="padding-top:13px;">
-                  <a href = "{{ url('login') }}" class="btn btn-danger"><strong>Login</strong></a>
+                  <a href = "{{ url('login') }}" class="btn btn-danger" style="font-size:12px;"><strong>Login</strong></a>
                 </div>
               @endif
             </ul>

@@ -3,10 +3,12 @@
 @section('main')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
                 <div class="panel-body">
+                  <div class="login" style="text-align:center;margin-bottom:30px;">
+                    <strong>Login</strong><hr>
+                  </div>
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {!! csrf_field() !!}
 
@@ -40,7 +42,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-danger">
                                     <i class="fa fa-btn fa-sign-in"></i>Login
                                 </button>
                             </div>
@@ -52,3 +54,7 @@
     </div>
 </div>
 @endsection
+
+@section('footer')
+    @include('footer')
+@stop

@@ -4,6 +4,9 @@ html {
 }
 
 body {
+
+    font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
     margin-bottom: 70px;
     background-color: #f0f8f8;
      /* Space untuk #footer */
@@ -61,11 +64,11 @@ body {
 }
 
 .parallax-window {
-    min-height: 700px;
+    min-height: 400px;
     background: transparent;
 }
 
-/* Jumlah siswa, pagination dan tombol tambah siswa */
+/* Jumlah produk, pagination dan tombol tambah produk */
 .table-nav, .tombol-nav {
     display: block;
     clear: both;
@@ -132,4 +135,10 @@ ul.pagination, ul.pager {
 
 .btn {
   border-radius: 2px;
+}
+
+#tabel-user {
+  border : 1px solid #ddd;
+  background-color: #fff;
+  padding-top: 50px;
 }

@@ -6,6 +6,7 @@ use App\Http\Requests;
 // use Request;
 use Illuminate\Http\Request;
 use App\User;
+use App\Anggota;
 use Validator;
 use Session;
 
@@ -24,7 +25,7 @@ class UserController extends Controller
      */
     protected function index()
     {
-        $user_list = User::all();
+        $user_list = User::orderBy('id','asc')->paginate(10);
         return view('user.index', compact('user_list'));
     }
 
@@ -78,8 +79,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $userl = User::findOrFail($id);
-        return view('user.show', compact('userl'));
+        $user = User::findOrFail($id);
+        return view('user.show', compact('user'));
     }
 
     /**

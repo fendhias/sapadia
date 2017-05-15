@@ -10,7 +10,7 @@
             @include('_partial.flash_message')
           </div>
 
-        <div class="panel panel-default" style="padding:20px;">
+        <div class="panel panel-default">
           <div class="row">
 
             <div class="col-md-6">
@@ -27,10 +27,10 @@
               </div>
             </div>
 
-            <div class="col-md-6" style="padding-left:30px">
+            <div class="col-md-6" style="padding:30px 45px 30px 15px">
               <div class="rincian">
                 <div class="page-header" style="font-size:20px;margin:0px">
-                  <p>{{ $produk->nama_siswa }}</p>
+                  <p>{{ $produk->nama_produk }}</p>
                 </div>
                 <div class="harga pull-right" style="font-size:20px;padding-top:15px;">
                    <p style="color:#5cb85c;">{{ 'Rp ' . $produk->harga }}</p>
@@ -59,11 +59,15 @@
                   @if (Auth::check())
                     <div class="aksi pull-right">
                       <div class="box-button">
-                          {{ link_to('produk/' . $produk->id . '/edit', 'Edit Produk', ['class' => 'btn btn-default', 'span' => 'entypo-cancel' ]) }}
+                        <a href="{{ URL::to('produk/' . $produk->id . '/edit') }}" class="btn btn-default">
+                           <i class="glyphicon glyphicon-pencil"></i>
+                        </a>
                       </div>
                       <div class="box-button">
                           {!! Form::open(['method' => 'DELETE', 'action' => ['ProdukController@destroy', $produk->id]]) !!}
-                              {!! Form::submit('Hapus', ['class' => 'btn btn-default']) !!}
+                            <button type="submit" class="btn btn-default">
+                              <i class="glyphicon glyphicon-trash"></i>
+                            </button>
                           {!! Form::close() !!}
                       </div>
                     </div>

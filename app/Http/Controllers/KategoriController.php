@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Requests\KelasRequest;
+use App\Http\Requests\KategoriRequest;
 use App\Kategori;
 use Session;
 
@@ -42,7 +42,7 @@ class KategoriController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(KelasRequest $request)
+    public function store(KategoriRequest $request)
     {
         Kategori::create($request->all());
         Session::flash('flash_message', 'Data kelas berhasil disimpan.');
@@ -67,7 +67,7 @@ class KategoriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Kategori $kelas, KelasRequest $request)
+    public function update(Kategori $kelas, KategoriRequest $request)
     {
         $kelas->update($request->all());
         Session::flash('flash_message', 'Data kelas berhasil diupdate.');

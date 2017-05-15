@@ -49,44 +49,44 @@ class ProdukController extends Controller
             $input['foto'] = $this->uploadFoto($request);
         }
 
-        // Insert data siswa
-        $siswa = Produk::create($input);
+        // Insert data produk
+        $produk = Produk::create($input);
         Session::flash('flash_message', 'Data Produk berhasil disimpan.');
 
         return redirect('produk');
     }
 
-    public function edit(Produk $siswa)
+    public function edit(Produk $produk)
     {
-        return view('produk.edit', compact('siswa'));
+        return view('produk.edit', compact('produk'));
     }
 
-    public function update(Produk $siswa, ProdukRequest $request)
+    public function update(Produk $produk, ProdukRequest $request)
     {
         $input = $request->all();
 
         // Cek apakah ada foto baru di form?
         if ($request->hasFile('foto')) {
             // Hapus foto lama
-            $this->hapusFoto($siswa);
+            $this->hapusFoto($produk);
 
             // Upload foto baru
            $input['foto'] = $this->uploadFoto($request);
         }
 
-        // Update siswa di tabel siswa
-        $siswa->update($input);
+        // Update produk di tabel produk
+        $produk->update($input);
 
         // Update telepon di tabel telepon
         Session::flash('flash_message', 'Data Produk berhasil diupdate.');
 
-        return redirect('produk/' . $siswa->id);
+        return redirect('produk/' . $produk->id);
     }
 
-    public function destroy(Produk $siswa)
+    public function destroy(Produk $produk)
     {
-        $this->hapusFoto($siswa);
-        $siswa->delete();
+        $this->hapusFoto($produk);
+        $produk->delete();
         Session::flash('flash_message', 'Data Produk berhasil dihapus.');
         Session::flash('penting', true);
         return redirect('produk');
@@ -97,13 +97,11 @@ class ProdukController extends Controller
         $kata_kunci    = trim($request->input('kata_kunci'));
 
         if (! empty($kata_kunci)) {
-            $jenis_kelamin = $request->input('jenis_kelamin');
-            $id_kelas      = $request->input('id_kelas');
+            $id_kategori      = $request->input('id');
 
             // Query
-            $query         = Produk::where('nama_siswa', 'LIKE', '%' . $kata_kunci . '%');
-            (! empty($jenis_kelamin)) ? $query->JenisKelamin($jenis_kelamin) : '';
-            (! empty($id_kelas)) ? $query->Kelas($id_kelas) : '';
+            $query         = Produk::where('nama_produk', 'LIKE', '%' . $kata_kunci . '%');
+            (! empty($id_kategori)) ? $query->Kategori($id_kelas) : '';
             $produk_list = $query->paginate(2);
 
             // URL Links pagination
