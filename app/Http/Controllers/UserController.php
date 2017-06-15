@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 // use Request;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use App\User;
 use App\Anggota;
 use Validator;
@@ -45,27 +46,29 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        $data = $request->all();
+        $input = $request->all();
 
-        $validasi = Validator::make($data, [
-            'name'     => 'required|max:255',
-            'email'    => 'required|email|max:100|unique:users',
-            'password' => 'required|confirmed|min:6',
-            'level'    => 'required|in:admin,operator'
-        ]);
-
-        if ($validasi->fails()) {
-            return redirect('user/create')
-                    ->withInput()
-                    ->withErrors($validasi);
+        // Upload Foto
+        if ($request->hasFile('foto')) {
+            $input['foto'] = $this->uploadFoto($request);
         }
 
         // Hash password.
-        $data['password'] = bcrypt($data['password']);
+        $input['password'] = bcrypt($input['password']);
 
-        User::create($data);
+        $user = User::create($input);
+
+        $anggota = new Anggota;
+        $anggota->tanggal_lahir = $request->input('tanggal_lahir');
+        $anggota->jenis_kelamin = $request->input('jenis_kelamin');
+        $anggota->telepon = $request->input('telepon');
+        $anggota->foto = $request->input('foto');
+        $anggota->alamat = $request->input('alamat');
+        $anggota->bio = $request->input('bio');
+        $user->anggota()->save($anggota);
+
         Session::flash('flash_message', 'Data user berhasil disimpan.');
 
         return redirect('user');
@@ -92,6 +95,12 @@ class UserController extends Controller
     protected function edit($id)
     {
         $user = User::findOrFail($id);
+        $user->tanggal_lahir = $user->anggota->tanggal_lahir;
+        $user->jenis_kelamin = $user->anggota->jenis_kelamin;
+        $user->telepon = $user->anggota->telepon;
+        $user->foto = $user->anggota->foto;
+        $user->alamat = $user->anggota->alamat;
+        $user->bio = $user->anggota->bio;
         return view('user.edit', compact('user'));
     }
 
@@ -111,7 +120,13 @@ class UserController extends Controller
             'name'     => 'required|max:255',
             'email'    => 'required|email|max:100|unique:users,email,' . $data['id'],
             'password' => 'sometimes|confirmed|min:6',
-            'level'    => 'required|in:admin,operator'
+            'level'    => 'required|in:admin,operator',
+            'tanggal_lahir' => 'sometimes',
+            'jenis_kelamin' => 'sometimes',
+            'telepon'       => 'sometimes',
+            'foto'          => 'sometimes',
+            'alamat'        => 'sometimes',
+            'bio'           => 'sometimes',
         ]);
 
         if ($validasi->fails()) {
@@ -128,10 +143,29 @@ class UserController extends Controller
             $data = array_except($data, ['password']);
         }
 
+        if ($request->hasFile('foto')) {
+            // Hapus foto lama
+            $this->hapusFoto($produk);
+
+            // Upload foto baru
+           $input['foto'] = $this->uploadFoto($request);
+        }
+
         $user->update($data);
+
+        $anggota = $user->anggota;
+        $anggota->tanggal_lahir = $request->input('tanggal_lahir');
+        $anggota->jenis_kelamin = $request->input('jenis_kelamin');
+        $anggota->telepon = $request->input('telepon');
+        $anggota->foto = $request->input('foto');
+        $anggota->alamat = $request->input('alamat');
+        $anggota->bio = $request->input('bio');
+
+        $user->anggota()->save($anggota);
+
         Session::flash('flash_message', 'Data user berhasil diupdate.');
 
-        return redirect('user');
+        return redirect('user/'. $user->id );
     }
 
     /**
@@ -148,4 +182,34 @@ class UserController extends Controller
         Session::flash('penting', true);
         return redirect('user');
     }
+
+    private function uploadFoto(UserRequest $request)
+    {
+        $foto = $request->file('foto');
+        $ext  = $foto->getClientOriginalExtension();
+
+        if ($request->file('foto')->isValid()) {
+            $foto_name   = date('YmdHis'). ".$ext";
+            $upload_path = 'fotoupload';
+            $request->file('foto')->move($upload_path, $foto_name);
+
+            // Filename untuk database --> 20160220214738.jpg
+            return $foto_name;
+        }
+        return false;
+    }
+
+    private function hapusFoto(User $siswa)
+    {
+        $exist = Storage::disk('foto')->exists($siswa->foto);
+
+        if (isset($siswa->foto) && $exist) {
+            $delete = Storage::disk('foto')->delete($siswa->foto);
+            if ($delete) {
+                return true;
+            }
+            return false;
+        }
+    }
+
 }

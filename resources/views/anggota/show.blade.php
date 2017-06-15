@@ -2,46 +2,54 @@
 
 @section('main')
 
-        <!-- Portfolio Item Heading -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h3 class="page-header">{{ $anggota->users->name }}
-                </h3>
-            </div>
-        </div>
-        <!-- /.row -->
+      <div id="anggota" style="padding-top:50px;">
 
-        <!-- Portfolio Item Row -->
-        <div class="row">
+        @include('_partial.flash_message')
 
-            <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-3">
+              <div class="panel panel-default"  style="padding:10px;background:none;">
               @if (isset($anggota->foto))
-                  <img style="object-fit: cover;
-                  width:500px;
-                  height:500px;" src="{{ asset('fotoupload/' . $anggota->foto) }}">
+                  <img class="img-thumbnail img-circle" style="object-fit: cover;
+                  width:120px;
+                  height:120px;margin:35px;" src="{{ asset('fotoupload/' . $anggota->foto) }}">
               @else
                    @if ($anggota->jenis_kelamin == 'L')
-                       <img style="object-fit: cover;
-                       width:500px;
-                       height:500px;" src="{{ asset('fotoupload/dummymale.jpg') }}">
+                       <img class="img-thumbnail img-circle" style="object-fit: cover;
+                       width:120px;
+                       height:120px;margin:35px;" src="{{ asset('fotoupload/dummymale.jpg') }}">
                    @else
-                       <img style="object-fit: cover;
-                       width:500px;
-                       height:500px;" src="{{ asset('fotoupload/dummyfemale.jpg') }}">
+                       <img class="img-thumbnail img-circle" style="object-fit: cover;
+                       width:120px;
+                       height:120px;margin:35px;" src="{{ asset('fotoupload/dummyfemale.jpg') }}">
                    @endif
               @endif
+
+              <div class="nama" style="margin-top:10px;">
+                <p style="font-size:21px;">{{ $anggota->users->name }}</p>
+              </div>
+
+              <div class="email">
+                <i class="glyphicon glyphicon-envelope"></i>
+                 <strong>{{ $anggota->users->email }}</strong>
+              </div>
+
+              <div class="tombol">
+                @if (Auth::check() && Auth::user()->id)
+                  <hr>
+                  <a href="{{ URL::to('anggota/' . $anggota->id . '/edit') }}" class="btn btn-default">
+                     <i class="glyphicon glyphicon-pencil"></i>
+                  </a>
+                @endif
+              </div>
+            </div>
             </div>
 
-            <div class="col-md-6">
-                <h4><strong>Rincian</strong></h4>
-                <table class="table table-striped">
+            <div class="col-md-9">
+                <table class="table table-default">
                   <tr>
-                    <th>Nama Produk</th>
+                    <th>Nama</th>
                     <td>{{ $anggota->users->name }}</td>
-                  </tr>
-                  <tr>
-                    <th>Kategori</th>
-                    <td>{{ $anggota->nama_anggota }}</td>
                   </tr>
                   <tr>
                       <th>Tanggal Lahir</th>
@@ -53,7 +61,11 @@
                   </tr>
                   <tr>
                       <th>Telepon</th>
-                      <td>{{ ! empty($anggota->telepon->nomor_telepon) ? $anggota->telepon->nomor_telepon : '-' }}</td>
+                      <td>{{ ! empty($anggota->telepon) ? $anggota->telepon : '-' }}</td>
+                  </tr>
+                  <tr>
+                      <th>Alamat</th>
+                      <td>{{ ! empty($anggota->alamat) ? $anggota->alamat : '-' }}</td>
                   </tr>
                   <tr>
                       <th>Bio</th>
@@ -61,19 +73,12 @@
                   </tr>
               </table>
 
-              <div class="tombol">
-                @if (Auth::check() && Auth::user()->level == 'admin' )
-                  <div class="aksi pull-right" style="padding-right:10px">
-                    <div class="box-button">
-                        {{ link_to('anggota/' . $anggota->id . '/edit', 'Edit', ['class' => 'btn btn-default btn-sm']) }}
-                    </div>
-                  </div>
-                @endif
-              </div>
-
             </div>
 
         </div>
+      </div>
+        <!-- Portfolio Item Row -->
+
         <!-- /.row -->
 
 

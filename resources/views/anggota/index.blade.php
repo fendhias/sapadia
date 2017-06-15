@@ -15,18 +15,18 @@
 
                     <div class="col-lg-2" style="margin-right: 30px;">
                       @if (isset($anggota->foto))
-                          <a href=" {{ 'anggota/' . $anggota->id }} "><img class="img-rounded" style="object-fit: cover;
+                          <a href=" {{ 'anggota/' . $anggota->id }} "><img class="img-circle" style="object-fit: cover;
                           width:100px;
-                          height:100px;border-radius: 30px;" src="{{ asset('fotoupload/' . $anggota->foto) }}"></a>
+                          height:100px;" src="{{ asset('fotoupload/' . $anggota->foto) }}"></a>
                       @else
                            @if ($anggota->jenis_kelamin == 'L')
-                               <a href=" {{ 'anggota/' . $anggota->id }} "><img class="img-rounded" style="object-fit: cover;
+                               <a href=" {{ 'anggota/' . $anggota->id }} "><img class="img-circle" style="object-fit: cover;
                                width:100px;
-                               height:100px;border-radius: 30px;" src="{{ asset('fotoupload/dummymale.jpg') }}"></a>
+                               height:100px;" src="{{ asset('fotoupload/dummymale.jpg') }}"></a>
                            @else
-                               <a href=" {{ 'anggota/' . $anggota->id }} "><img class="img-rounded" style="object-fit: cover;
+                               <a href=" {{ 'anggota/' . $anggota->id }} "><img class="img-circle" style="object-fit: cover;
                                width:100px;
-                               height:100px;border-radius: 30px;" src="{{ asset('fotoupload/dummyfemale.jpg') }}"></a>
+                               height:100px;" src="{{ asset('fotoupload/dummyfemale.jpg') }}"></a>
                            @endif
                       @endif
                     </div>
@@ -35,7 +35,7 @@
                     <a href=" {{ 'anggota/' . $anggota->id }} "><h4>{{ $anggota->users->name }}</h4></a>
                     <h5>{{ $anggota->tanggal_lahir }}</h5>
                   </div>
-                  </div>
+                </div><hr>
                 </div>
 
               </div>

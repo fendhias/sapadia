@@ -46,7 +46,7 @@
                   @endif
                 </div>
                 <div class="telp" style="font-size:14px;padding-top:15px;">
-                  Telp : {{ ! empty($produk->telepon->nomor_telepon) ? $produk->telepon->nomor_telepon : '-' }}
+                  Telp : {{ ! empty($produk->users->anggota->telepon) ? $produk->users->anggota->telepon : '-' }}
                 </div>
                 <div class="hubungi" style="font-size:14px;padding-top:15px;">
                   @if (! empty($produk->users->id))

@@ -22,7 +22,7 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        $kategori_list = Kategori::orderBy('id')->paginate(5);
+        $kategori_list = Kategori::orderBy('id')->paginate(10);
         return view('kategori/index', compact('kategori_list'));
     }
 
@@ -45,7 +45,7 @@ class KategoriController extends Controller
     public function store(KategoriRequest $request)
     {
         Kategori::create($request->all());
-        Session::flash('flash_message', 'Data kelas berhasil disimpan.');
+        Session::flash('flash_message', 'Data kategori berhasil disimpan.');
         return redirect('kategori');
     }
 
@@ -70,7 +70,7 @@ class KategoriController extends Controller
     public function update(Kategori $kelas, KategoriRequest $request)
     {
         $kelas->update($request->all());
-        Session::flash('flash_message', 'Data kelas berhasil diupdate.');
+        Session::flash('flash_message', 'Data kategori berhasil diupdate.');
         return redirect('kategori');
     }
 

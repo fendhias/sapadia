@@ -11,10 +11,10 @@ class Anggota extends Model
   protected $primaryKey = 'id';
 
   protected $fillable = [
-      'nama_anggota',
       'tanggal_lahir',
       'jenis_kelamin',
       'telepon',
+      'alamat',
       'bio',
       'foto',
   ];

@@ -25,23 +25,23 @@
                     <tr>
                         <td style="padding-left:20px;">
                           @if (isset($user->anggota->foto))
-                              <a href=" {{ 'user/' . $user->id }} "><img class="img-rounded" style="object-fit: cover;
+                              <a href=" {{ 'user/' . $user->id }} "><img class="img-circle" style="object-fit: cover;
                               width:60px;
-                              height:60px;border-radius: 30%;" src="{{ asset('fotoupload/dummymale.jpg') }}"></a>
+                              height:60px;" src="{{ asset('fotoupload/' . $user->anggota->foto) }}"></a>
                           @elseif (isset($user->anggota->jenis_kelamin))
                                @if ($user->anggota->jenis_kelamin == 'L')
-                                   <a href=" {{ 'user/' . $user->id }} "><img class="img-rounded" style="object-fit: cover;
+                                   <a href=" {{ 'user/' . $user->id }} "><img class="img-circle" style="object-fit: cover;
                                    width:60px;
-                                   height:60px;border-radius: 30%;" src="{{ asset('fotoupload/dummymale.jpg') }}"></a>
+                                   height:60px;" src="{{ asset('fotoupload/dummymale.jpg') }}"></a>
                                @else
-                                   <a href=" {{ 'user/' . $user->id }} "><img class="img-rounded" style="object-fit: cover;
+                                   <a href=" {{ 'user/' . $user->id }} "><img class="img-circle" style="object-fit: cover;
                                    width:60px;
-                                   height:60px;border-radius: 30%;" src="{{ asset('fotoupload/dummyfemale.jpg') }}"></a>
+                                   height:60px;" src="{{ asset('fotoupload/dummyfemale.jpg') }}"></a>
                                @endif
                            @else
-                               <a href=" {{ 'user/' . $user->id }} "><img class="img-rounded" style="object-fit: cover;
+                               <a href=" {{ 'user/' . $user->id }} "><img class="img-circle" style="object-fit: cover;
                                width:60px;
-                               height:60px;border-radius: 30%;" src="{{ asset('fotoupload/dummymale.jpg') }}"></a>
+                               height:60px;" src="{{ asset('fotoupload/dummymale.jpg') }}"></a>
                           @endif
                         </td>
                         <td><a href=" {{ 'user/' . $user->id }} ">{{ $user->name }}</a></td>

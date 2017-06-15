@@ -21,7 +21,6 @@
           <span style="color:grey">max 100 karakter</span>
         </div>
       </div>
-
     </div>
 
 <!-- Kelas -->
@@ -134,7 +133,6 @@
           @endif
         </div>
       </div>
-
     </div>
 
 <div class="form-group">

@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Kategori;
 use App\User;
+use App\Anggota;
 
 class FormServiceProvider extends ServiceProvider
 {

@@ -1,17 +1,20 @@
 @extends('template')
 
 @section('main')
-    <div id="kelas">
-        <h2>Kelas</h2>
+    <div id="kelas"  style="padding-top:20px;">
 
         @include('_partial.flash_message')
 
+        <div class="tombol-nav">
+            <a href="kategori/create" class="btn btn-danger pull-right" style="margin-bottom:20px;">Tambah Kategori</a>
+        </div>
+
         @if (count($kategori_list) > 0)
-            <table class="table">
-                <thead>
+            <table class="table" id="tabel-user">
+                <thead style="background-color: #ddd;">
                     <tr>
-                        <th>No</th>
-                        <th>Kelas</th>
+                        <th style="padding-left:20px">No</th>
+                        <th>Nama Kategori</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -19,15 +22,19 @@
                     <?php $i = 0; ?>
                     <?php foreach($kategori_list as $kategori): ?>
                     <tr>
-                        <td>{{ ++$i }}</td>
+                        <td style="padding-left:20px">{{ ++$i }}</td>
                         <td>{{ $kategori->nama_kategori }}</td>
                         <td>
                             <div class="box-button">
-                                {{ link_to('kategori/' . $kategori->id . '/edit', 'Edit', ['class' => 'btn btn-warning btn-sm']) }}
+                              <a href="{{ URL::to('kategori/' . $kategori->id . '/edit') }}" class="btn btn-default">
+                                 <i class="glyphicon glyphicon-pencil"></i>
+                              </a>
                             </div>
                             <div class="box-button">
                                 {!! Form::open(['method' => 'DELETE', 'action' => ['KategoriController@destroy', $kategori->id]]) !!}
-                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
+                                    <button type="submit" class="btn btn-default">
+                                      <i class="glyphicon glyphicon-trash"></i>
+                                    </button>
                                 {!! Form::close() !!}
                             </div>
                         </td>
@@ -38,10 +45,6 @@
         @else
             <p>Tidak ada data kelas.</p>
         @endif
-
-        <div class="tombol-nav">
-            <a href="kategori/create" class="btn btn-primary">Tambah Kategori</a>
-        </div>
 
     </div> <!-- / #kelas -->
 

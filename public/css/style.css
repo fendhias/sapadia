@@ -8,7 +8,7 @@ body {
     font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     overflow-x: hidden;
     margin-bottom: 70px;
-    background-color: #f0f8f8;
+    background-color: #f7f7f7;
      /* Space untuk #footer */
 }
 .container {
@@ -35,6 +35,7 @@ body {
 
 .navbar {
 	height: 60px;
+  background-color: #fff;
 }
 
 .navbar-nav{

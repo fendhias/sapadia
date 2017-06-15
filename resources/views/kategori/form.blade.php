@@ -7,13 +7,25 @@
 @else
     <div class="form-group">
 @endif
-    {!! Form::label('nama_kategori', 'Nama Kelas:', ['class' => 'control-label']) !!}
-    {!! Form::text('nama_kategori', null, ['class' => 'form-control']) !!}
-    @if ($errors->has('nama_kategori'))
-        <span class="help-block">{{ $errors->first('nama_kategori') }}</span>
-    @endif
+    <div class="row">
+      <div class="col-lg-4">
+        {!! Form::label('nama_kategori', 'Nama Kategori:', ['class' => 'control-label pull-right']) !!}
+      </div>
+      <div class="col-lg-6">
+        {!! Form::text('nama_kategori', null, ['class' => 'form-control']) !!}
+        @if ($errors->has('nama_kategori'))
+            <span class="help-block">{{ $errors->first('nama_kategori') }}</span>
+        @endif
+      </div>
+    </div>
+
+
 </div>
 
 <div class="form-group">
-    {!! Form::submit($submitButtonText, ['class' => 'btn btn-primary form-control']) !!}
+  <div class="row">
+    <div class="col-md-6 col-md-offset-4">
+    {!! Form::submit($submitButtonText, ['class' => 'btn btn-danger']) !!}
+  </div>
+</div>
 </div>

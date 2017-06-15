@@ -3,44 +3,21 @@
 @endif
 
 @if ($errors->any())
-    <div class="form-group {{ $errors->has('nisn') ? 'has-error' : 'has-success' }}">
-@else
-    <div class="form-group">
-@endif
-    {!! Form::label('nisn', 'NISN:', ['class' => 'control-label']) !!}
-    {!! Form::text('nisn', null, ['class' => 'form-control']) !!}
-    @if ($errors->has('nisn'))
-        <span class="help-block">{{ $errors->first('nisn') }}</span>
-    @endif
-</div>
-
-@if ($errors->any())
     <div class="form-group {{ $errors->has('nama_siswa') ? 'has-error' : 'has-success' }}">
 @else
     <div class="form-group">
 @endif
-    {!! Form::label('nama_siswa', 'Nama:', ['class' => 'control-label']) !!}
-    {!! Form::text('nama_siswa', null, ['class' => 'form-control']) !!}
-    @if ($errors->has('nama_siswa'))
-        <span class="help-block">{{ $errors->first('nama_siswa') }}</span>
-    @endif
-</div>
-
-<!-- Kelas -->
-@if ($errors->any())
-    <div class="form-group {{ $errors->has('id_kelas') ? 'has-error' : 'has-success' }}">
-@else
-    <div class="form-group">
-@endif
-    {!! Form::label('id_kelas', 'Kelas:', ['class' => 'control-label']) !!}
-    @if(count($list_kelas) > 0)
-        {!! Form::select('id_kelas', $list_kelas, null, ['class' => 'form-control', 'id' => 'id_kelas', 'placeholder' => 'Pilih Kelas']) !!}
-    @else
-        <p>Tidak ada pilihan kelas, buat dulu ya...!</p>
-    @endif
-    @if ($errors->has('id_kelas'))
-        <span class="help-block">{{ $errors->first('id_kelas') }}</span>
-    @endif
+    <div class="row">
+      <div class="col-lg-4">
+        {!! Form::label('name', 'Nama', ['class' => 'control-label pull-right']) !!}
+      </div>
+      <div class="col-lg-6">
+        {!! Form::text( 'name', null, ['class' => 'form-control']) !!}
+        @if ($errors->has('name'))
+            <span class="help-block">{{ $errors->first('name') }}</span>
+        @endif
+      </div>
+    </div>
 </div>
 
 @if ($errors->any())
@@ -48,11 +25,17 @@
 @else
     <div class="form-group">
 @endif
-    {!! Form::label('tanggal_lahir', 'Tanggal Lahir:', ['class' => 'control-label']) !!}
-    {!! Form::date('tanggal_lahir', !empty($siswa) ? $siswa->tanggal_lahir->format('Y-m-d'): null, ['class' => 'form-control', 'id' => 'tanggal_lahir']) !!}
-    @if ($errors->has('tanggal_lahir'))
-        <span class="help-block">{{ $errors->first('tanggal_lahir') }}</span>
-    @endif
+    <div class="row">
+      <div class="col-lg-4">
+        {!! Form::label('tanggal_lahir', 'Tanggal Lahir', ['class' => 'control-label pull-right']) !!}
+      </div>
+      <div class="col-lg-6">
+        {!! Form::date('tanggal_lahir', !empty($siswa) ? $siswa->tanggal_lahir->format('Y-m-d'): null, ['class' => 'form-control', 'id' => 'tanggal_lahir']) !!}
+        @if ($errors->has('tanggal_lahir'))
+            <span class="help-block">{{ $errors->first('tanggal_lahir') }}</span>
+        @endif
+      </div>
+    </div>
 </div>
 
 @if ($errors->any())
@@ -60,45 +43,40 @@
 @else
     <div class="form-group">
 @endif
-    {!! Form::label('jenis_kelamin', 'Jenis Kelamin:', ['class' => 'control-label']) !!}
-    <div class="radio">
-        <label>{!! Form::radio('jenis_kelamin', 'L') !!} Laki-laki</label>
+    <div class="row">
+      <div class="col-lg-4">
+        {!! Form::label('jenis_kelamin', 'Jenis Kelamin', ['class' => 'control-label pull-right']) !!}
+      </div>
+    <div class="col-lg-6">
+      <div class="radio">
+          <label>{!! Form::radio('jenis_kelamin', 'L') !!} Laki-laki</label>
+      </div>
+      <div class="radio">
+          <label>{!! Form::radio('jenis_kelamin', 'P') !!} Perempuan</label>
+      </div>
+      @if ($errors->has('jenis_kelamin'))
+          <span class="help-block">{{ $errors->first('jenis_kelamin') }}</span>
+      @endif
     </div>
-    <div class="radio">
-        <label>{!! Form::radio('jenis_kelamin', 'P') !!} Perempuan</label>
-    </div>
-    @if ($errors->has('jenis_kelamin'))
-        <span class="help-block">{{ $errors->first('jenis_kelamin') }}</span>
-    @endif
-</div>
+  </div>
+  </div>
 
 @if ($errors->any())
     <div class="form-group {{ $errors->has('nomor_telepon') ? 'has-error' : 'has-success' }}">
 @else
     <div class="form-group">
 @endif
-    {!! Form::label('nomor_telepon', 'Telepon:', ['class' => 'control-label']) !!}
-    {!! Form::text('nomor_telepon', null, ['class' => 'form-control']) !!}
-    @if ($errors->has('nomor_telepon'))
-        <span class="help-block">{{ $errors->first('nomor_telepon') }}</span>
+<div class="row">
+  <div class="col-lg-4">
+    {!! Form::label('telepon', 'Telepon', ['class' => 'control-label pull-right']) !!}
+  </div>
+  <div class="col-lg-6">
+    {!! Form::text('telepon', null, ['class' => 'form-control']) !!}
+    @if ($errors->has('telepon'))
+        <span class="help-block">{{ $errors->first('telepon') }}</span>
     @endif
+  </div>
 </div>
-
-@if ($errors->any())
-    <div class="form-group {{ $errors->has('hobi_siswa') ? 'has-error' : 'has-success' }}">
-@else
-    <div class="form-group">
-@endif
-{!! Form::label('hobi_siswa', 'Hobi:', ['class' => 'control-label']) !!}
-    @if(count($list_hobi) > 0)
-        @foreach($list_hobi as $key => $value)
-            <div class="checkbox">
-                <label>{!! Form::checkbox('hobi_siswa[]', $key, null) !!} {{ $value }}</label>
-            </div>
-        @endforeach
-    @else
-        <p>Tidak ada pilihan hobi, buat dulu ya...!</p>
-    @endif
 </div>
 
 @if ($errors->any())
@@ -106,13 +84,59 @@
 @else
     <div class="form-group">
 @endif
-    {!! Form::label('foto', 'Foto:') !!}
-    {!! Form::file('foto') !!}
-    @if ($errors->has('foto'))
-        <span class="help-block">{{ $errors->first('foto') }}</span>
-    @endif
+    <div class="row">
+      <div class="col-lg-4">
+        {!! Form::label('foto', 'Foto', ['class' => 'control-label pull-right']) !!}
+      </div>
+      <div class="col-lg-6">
+        {!! Form::file('foto') !!}
+        @if ($errors->has('foto'))
+            <span class="help-block">{{ $errors->first('foto') }}</span>
+        @endif
+      </div>
+    </div>
 </div>
 
-<div class="form-group">
-    {!! Form::submit($submitButtonText, ['class' => 'btn btn-primary form-control']) !!}
-</div>
+@if ($errors->any())
+    <div class="form-group {{ $errors->has('deskripsi') ? 'has-error' : 'has-success' }}">
+@else
+    <div class="form-group">
+@endif
+      <div class="row">
+        <div class="col-lg-4">
+          {!! Form::label('alamat', 'Alamat', ['class' => 'control-label pull-right']) !!}
+        </div>
+        <div class="col-lg-6">
+          {!! Form::textarea('alamat', null, ['class' => 'form-control']) !!}
+          @if ($errors->has('alamat'))
+              <span class="help-block">{{ $errors->first('alamat') }}</span>
+          @endif
+        </div>
+      </div>
+    </div>
+
+    @if ($errors->any())
+        <div class="form-group {{ $errors->has('deskripsi') ? 'has-error' : 'has-success' }}">
+    @else
+        <div class="form-group">
+    @endif
+          <div class="row">
+            <div class="col-lg-4">
+              {!! Form::label('bio', 'Bio', ['class' => 'control-label pull-right']) !!}
+            </div>
+            <div class="col-lg-6">
+              {!! Form::textarea('bio', null, ['class' => 'form-control']) !!}
+              @if ($errors->has('bio'))
+                  <span class="help-block">{{ $errors->first('bio') }}</span>
+              @endif
+            </div>
+          </div>
+        </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-4">
+          {!! Form::submit($submitButtonText, ['class' => 'btn btn-danger']) !!}
+        </div>
+      </div>
+    </div>
